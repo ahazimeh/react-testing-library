@@ -1,0 +1,33 @@
+React Testing Library provides virtual dom for tests
+Jest is a test runner
+
+render method creates a virtual dom and you access it with the screen global object
+
+toHaveLength
+
+// jest dom
+toBeInTheDocument()
+toBeVisible()
+toBeChecked()
+
+react testing library helps with rendering component into virtual dom
+helps searching the virtual dom
+interacting with the virtual dom
+
+TDD: write the test before writing the code
+then write the code to make the test pass
+it is called red green testing
+but why:
+makes a difference on how testing feels
+rather than doing a humen testing then run the tests, you can know what is wrong because the tests are already written
+
+Acceptance / End to end tests(E2E): Cypress, Selenium
+
+Functunal testing tests behaviours: such as when the user enters invalid data the input turns red
+
+priorities to select an element:
+https://testing-library.com/docs/queries/about/#priority
+getByRole:
+https://www.w3.org/TR/wai-aria/#role_definitions
+
+if you can't find an element with screen reader then your app isn't friendly to screen reader
