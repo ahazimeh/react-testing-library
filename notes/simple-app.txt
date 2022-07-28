@@ -2,3 +2,18 @@ github repo for testing library jest-dom where we can see our custom matchers
 https://github.com/testing-library/jest-dom
 
 regression testing
+
+///
+Transformers
+For styles to be interpreted in tests, you need a transformer to, well, transform the CSS classes into styles. Here are a couple options:
+
+https://www.npmjs.com/package/jest-transform-css
+
+https://www.npmjs.com/package/jest-css-modules-transform
+
+The latter has more downloads per week, but the former seems to be more actively maintained.
+///
+
+she said it is for accessibility, for screen readers to know whether the button is disabled or not
+aria-checked={disabled}
+
