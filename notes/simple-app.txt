@@ -17,3 +17,5 @@ The latter has more downloads per week, but the former seems to be more actively
 she said it is for accessibility, for screen readers to know whether the button is disabled or not
 aria-checked={disabled}
 
+// react testing library is smart enough so now you can select checkbox by role using this Disable button name
+<label htmlFor="disable-button-checkbox">Disable button</label>
