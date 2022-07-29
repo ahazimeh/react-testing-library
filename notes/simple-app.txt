@@ -19,3 +19,7 @@ aria-checked={disabled}
 
 // react testing library is smart enough so now you can select checkbox by role using this Disable button name
 <label htmlFor="disable-button-checkbox">Disable button</label>
+
+when to unit testing rather than functional testing:
+    the function is hard enough to test with functional test
+    too many edge cases
