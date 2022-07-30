@@ -1,0 +1,20 @@
+command[All]ByQueryType
+commands:
+get: expect element to be in Dom
+query: expect element not to be in Dom
+find: expect element to apear async
+
+[All] to expect multiple matches
+
+QueryType
+    Role (most prefered)
+    AltText (images)
+    Text (display elements)
+    Form elements
+        PlaceholderText
+        LabelText
+        DisplayValue
+Recommandations for references when it comes to screen queries:
+https://testing-library.com/docs/queries/about/
+https://testing-library.com/docs/react-testing-library/cheatsheet/
+https://testing-library.com/docs/queries/about/#priority
