@@ -1,0 +1,5 @@
+npm i msw
+// add these files, read in the docs how to define integrate mocks
+src/setupTests.js
+src/mocks/
+
