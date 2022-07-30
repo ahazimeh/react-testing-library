@@ -8,6 +8,7 @@ https://github.com/bonnie/bonniedotdev/blob/main/client/.eslintrc.json
 
 to set eslint json settings globally
 https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations
+on windows it got this path: C:\Users\AliHazimeh\AppData\Roaming\Code\User\settings.json
 
 to configure eslint in setting.json
 {
