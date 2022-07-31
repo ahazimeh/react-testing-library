@@ -1,0 +1,28 @@
+spin button
+
+// we wrapped it with context provider to be able to make use of contexts
+render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
+
+
+
+  return new Intl.NumberFormat("en-US", {
+    currency: "USD",
+    minimumFractionDigits: 2,
+  });
+
+  to provide a custom render
+  https://testing-library.com/docs/react-testing-library/setup/#custom-render
+  /////
+  testing-library-utils.jsx
+import { render } from "@testing-library/react";
+import { OrderDetailsProvider } from "../contexts/OrderDetails";
+
+const renderWithContext = (ui, options) =>
+  render(ui, { wrapper: OrderDetailsProvider, ...options });
+
+// re-export everything
+export * from "@testing-library/react";
+
+//override render method
+export { renderWithContext as render };
+/////
