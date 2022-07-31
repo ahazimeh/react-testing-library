@@ -1,4 +1,6 @@
 spin button
+exact: false for partial match
+const scoopsSubtotal = screen.getByText("Scoops total: $", { exact: false });
 
 // we wrapped it with context provider to be able to make use of contexts
 render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
