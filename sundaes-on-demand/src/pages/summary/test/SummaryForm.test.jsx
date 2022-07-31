@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import SummaryForm from "../SummaryForm";
 import userEvent from "@testing-library/user-event";
 
@@ -41,9 +41,16 @@ test("popover responds to hover", async () => {
   const popover = screen.getByText(/no ice cream will actually be delivered/i);
   expect(popover).toBeInTheDocument();
   // popover disapears when we mouse out
+
+  // this worked better, the code commented bellow was failing on first run but succeeding after that
   await user.unhover(termsAndConditions);
-  const nullPopoverAgain = screen.queryByText(
-    /no ice cream will actually be delivered/i
-  );
-  expect(nullPopoverAgain).not.toBeInTheDocument();
+  await waitFor(() => {
+    expect(
+      screen.queryByText(/no ice cream will actually be delivered/i)
+    ).not.toBeInTheDocument();
+  });
+  // const nullPopoverAgain = screen.queryByText(
+  //   /no ice cream will actually be delivered/i
+  // );
+  // expect(nullPopoverAgain).not.toBeInTheDocument();
 });
