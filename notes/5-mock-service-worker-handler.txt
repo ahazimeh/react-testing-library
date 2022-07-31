@@ -3,3 +3,16 @@ npm i msw
 src/setupTests.js
 src/mocks/
 
+jest debugging tools:
+    running only one test file
+    running only one test test withing a file
+
+to run only 1 test
+test.only("",()=>{})
+to skip a test
+test.skip("",()=>{})
+
+to run 1 filter press w to see your options, then p and write a regular expression
+to clear all filters press w then c
+
+waitFor will wait for all async code to complete
