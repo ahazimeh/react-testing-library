@@ -1,6 +1,6 @@
 spin button
 exact: false for partial match
-const scoopsSubtotal = screen.getByText("Scoops total: $", { exact: false });
+const scoopsSubtotal = screen.getByText("Scoops total: ", { exact: false });
 
 // we wrapped it with context provider to be able to make use of contexts
 render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
@@ -8,9 +8,10 @@ render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider });
 
 
   return new Intl.NumberFormat("en-US", {
+    style: "currency",
     currency: "USD",
     minimumFractionDigits: 2,
-  });
+  }).format(amount);
 
   to provide a custom render
   https://testing-library.com/docs/react-testing-library/setup/#custom-render
@@ -28,3 +29,13 @@ export * from "@testing-library/react";
 //override render method
 export { renderWithContext as render };
 /////
+
+h2 has role of heading
+exact: false doesn't work with byRole
+
+Unmounted Component Error:
+Skip auto cleanup(not recommanded)
+Mock useEffect or bypass server call(not recommanded)
+Include in the beggining of a test that asserts on state changes
+  one that awaits state changes
+Add await to the end of the test to avoid errors
