@@ -39,3 +39,6 @@ Mock useEffect or bypass server call(not recommanded)
 Include in the beggining of a test that asserts on state changes
   one that awaits state changes
 Add await to the end of the test to avoid errors
+  // example from section 7 exam
+  await screen.findByRole("spinbutton", { name: "Vanilla" });
+  await screen.findByRole("checkbox", { name: "Cherries" });

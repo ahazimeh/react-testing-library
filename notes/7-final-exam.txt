@@ -1,0 +1,11 @@
+screen.debug() // this will print out what the dom looks like at that point
+if you get a warning was not wrapped in act then this means there was an update after the
+test was completed so use await and findBy
+very similar for can't perform a react state update on unmounted component
+connection refuse then there is no mock server worker
+
+how to pass jest mock as a prop
+    jest.fn()
+    does not do anything
+    merely a placeholder to avoid errors
+render(<OrderEntry setOrderPhase={jest.fn()} />);
