@@ -1,7 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 
 import App from "../App";
+import { OrderDetailsProvider } from "../contexts/OrderDetails";
+import OrderEntry from "../pages/entry/OrderEntry";
 
 test("order phases for happy path", async () => {
   const user = userEvent.setup();
@@ -53,10 +55,16 @@ test("order phases for happy path", async () => {
   });
   await user.click(confirmOrderButton);
 
+  const loading = screen.getByText(/loading/i);
+  expect(loading).toBeInTheDocument();
+
   const thankYouHeader = await screen.findByRole("heading", {
     name: /thank you/i,
   });
   expect(thankYouHeader).toBeInTheDocument();
+
+  const notLoading = screen.queryByText(/loading/i);
+  expect(notLoading).not.toBeInTheDocument();
 
   const orderNumber = await screen.findByText(/order number/i);
   expect(orderNumber).toBeInTheDocument();
@@ -71,4 +79,47 @@ test("order phases for happy path", async () => {
 
   await screen.findByRole("spinbutton", { name: "Vanilla" });
   await screen.findByRole("checkbox", { name: "Cherries" });
+});
+
+test("Toppings header is not on summary page if no toppings ordered", async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const vanillaInput = await screen.findByRole("spinbutton", {
+    name: "Vanilla",
+  });
+  await user.clear(vanillaInput);
+  await user.type(vanillaInput, "1");
+  const chocolateInput = screen.getByRole("spinbutton", { name: "Chocolate" });
+  await user.clear(chocolateInput);
+  await user.type(chocolateInput, "2");
+
+  const orderSummaryButton = screen.getByRole("button", {
+    name: /order sundae/i,
+  });
+  await user.click(orderSummaryButton);
+
+  const scoopsHeading = screen.getByRole("heading", { name: "Scoops: $6.00" });
+  expect(scoopsHeading).toBeInTheDocument();
+
+  const toppingsHeading = screen.queryByRole("heading", { name: /toppings/i });
+  expect(toppingsHeading).not.toBeInTheDocument();
+});
+
+test("disable order button if there are no scoops ordered", async () => {
+  const user = userEvent.setup();
+  render(<OrderEntry setOrderPhase={jest.fn()} />, {});
+
+  let orderButton = screen.getByRole("button", { name: /order sundae/i });
+  expect(orderButton).toBeDisabled();
+
+  const vanillaInput = await screen.findByRole("spinbutton", {
+    name: "Vanilla",
+  });
+  await user.clear(vanillaInput);
+  await user.type(vanillaInput, "1");
+  expect(orderButton).toBeEnabled();
+
+  await user.clear(vanillaInput);
+  await user.type(vanillaInput, "0");
+  expect(orderButton).toBeDisabled();
 });

@@ -1,0 +1,14 @@
+Standard Questions to ask:
+What to render?
+    what is the smallest component that encompasses tests?
+Do we need to pass any props?
+Do we need to wrap in, say, OrderDetailsProvider?
+    Does the provider get used? Is it already wrapped within the component?
+Where should the tests go?
+    Which file? New file needed?
+What to test?
+    What's the behaviour that needs testing?
+How to test?
+    What queries and events?
+Do we need to await?
+    Is there anything async going on?
